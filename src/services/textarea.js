@@ -5,9 +5,12 @@
 
 Controller.open(function(_) {
   _.createTextarea = function() {
-    var textareaSpan = this.textareaSpan = $('<span class="mq-textarea"></span>'),
+    var textareaSpan = this.textareaSpan = $('<span class="mq-textarea"></span>')
       fn = this.options.substituteTextarea, textarea = this.textarea =
         $(fn ? fn() : '<textarea/>').appendTo(textareaSpan);
+
+    textarea.attr('autocomplete', 'off');
+    textarea.attr('autocapitalize', 'off');
 
     var ctrlr = this;
     ctrlr.cursor.selectionChanged = function() { ctrlr.selectionChanged(); };
